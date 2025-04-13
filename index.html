@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Identificador de Animais</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- TensorFlow.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.7.4/dist/tf.min.js"></script>
+    <!-- Teachable Machine -->
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8.4/dist/teachablemachine-image.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Identificador de Animais</h1>
+        <p>Descubra informações sobre diferentes espécies de animais</p>
+    </header>
+
+    <main>
+        <section class="upload-section">
+            <div class="card">
+                <h2>Selecione uma imagem para identificar</h2>
+                <div class="upload-options">
+                    <div class="file-upload">
+                        <label for="imageUpload" class="upload-btn">Carregar Imagem</label>
+                        <input type="file" id="imageUpload" accept="image/*" hidden>
+                    </div>
+                    <div class="camera-upload" id="cameraContainer">
+                        <button id="cameraButton" class="camera-btn">Usar Câmera</button>
+                        <video id="webcam" autoplay playsinline hidden></video>
+                        <button id="captureButton" class="capture-btn" hidden>Capturar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="preview-section">
+            <div class="card">
+                <h2>Visualização da Imagem</h2>
+                <div class="image-preview-container">
+                    <canvas id="canvas" width="224" height="224"></canvas>
+                    <div id="placeholderDiv" class="placeholder-div">
+                        <p>Selecione ou capture uma imagem</p>
+                    </div>
+                    <img id="preview" hidden alt="Prévia da imagem">
+                </div>
+                <div class="actions">
+                    <button id="classifyBtn" class="classify-btn" disabled>Classificar</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="results-section" id="resultsSection" hidden>
+            <div class="card results-card">
+                <h2>Resultados</h2>
+                <div class="result-container">
+                    <div class="main-result">
+                        <h3>Animal Identificado:</h3>
+                        <div class="identified-material">
+                            <div id="topResult" class="top-result">Aguardando classificação...</div>
+                            <div id="confidence" class="confidence">Confiança: 0%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="all-results">
+                        <h3>Todas as Possibilidades:</h3>
+                        <div id="predictionList" class="prediction-list">
+                            <!-- Resultados serão inseridos aqui -->
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="materialInfo" class="material-info">
+                    <h3>Sobre este animal:</h3>
+                    <p id="materialDescription">Selecione uma imagem e clique em classificar para obter informações.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 Identificador de Animais | Desenvolvido com TensorFlow.js e Teachable Machine</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
